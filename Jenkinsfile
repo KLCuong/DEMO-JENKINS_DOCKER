@@ -1,26 +1,9 @@
 pipeline {
-    agent any
-    tools {
-        docker 
-    }
-    environment {
-        DOCKER_IMAGE = 'maven:3.9.6-eclipse-temurin-17-alpine'
-    }
+    agent { docker { image 'maven:3.9.6-eclipse-temurin-17-alpine' } }
     stages {
-        stage('Checkout') {
+        stage('build') {
             steps {
-                checkout scm
-            }
-        }
-        stage('Build') {
-            agent {
-                docker {
-                    image DOCKER_IMAGE
-                    reuseNode = true
-                }
-            }
-            steps {
-                     sh 'mvn --version'
+                sh 'mvn --version'
             }
         }
     }
