@@ -1,12 +1,28 @@
 pipeline {
     agent any
     tools {
-        git 'git.version.2.42.0.windows.2' // Specify the name of your Git installation here
+        docker 'docker.version.25.0.3'
+    }
+    environment {
+        DOCKER_IMAGE = 'maven:3.9.6-eclipse-temurin-17-alpine'
     }
     stages {
-        // Your stages here
-        stage('Build'){
-            steps{echo'?'}      
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build') {
+            agent {
+                docker('docker.version.25.0.3') {
+                    image DOCKER_IMAGE
+                    reuseNode = true
+                }
+            }
+            steps {
+                     sh 'mvn --version'
+                }
+            }
         }
     }
 }
