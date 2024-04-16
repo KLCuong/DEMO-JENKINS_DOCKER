@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        Docker 'docker'
+        dockerTool 'docker'
     }
     environment {
         DOCKER_IMAGE = 'maven:3.9.6-eclipse-temurin-17-alpine'
