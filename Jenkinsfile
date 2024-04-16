@@ -6,7 +6,7 @@ pipeline {
     stages {
         // Your stages here
         stage('Build'){
-            echo'?'      
+            steps{echo'?'}      
         }
     }
 }
