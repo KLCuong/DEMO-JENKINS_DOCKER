@@ -1,10 +1,9 @@
 pipeline {
-    agent { docker { image 'maven:3.9.6-eclipse-temurin-17-alpine' } }
+    agent any
+    tools {
+        git 'Name_of_Your_Git_Installation' // Specify the name of your Git installation here
+    }
     stages {
-        stage('build') {
-            steps {
-                sh 'mvn --version'
-            }
-        }
+        // Your stages here
     }
 }
