@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build?'){
             steps{
-                bat 'mvn --version' //or sh 'mvn --version' for linux
+                sh 'mvn --version' //or bat 'mvn --version' for Win
             }
         }
 
