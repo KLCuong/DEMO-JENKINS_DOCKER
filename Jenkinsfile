@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        docker 'docker.version.25.0.3'
+        docker 
     }
     environment {
         DOCKER_IMAGE = 'maven:3.9.6-eclipse-temurin-17-alpine'
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build') {
             agent {
-                docker('docker.version.25.0.3') {
+                docker {
                     image DOCKER_IMAGE
                     reuseNode = true
                 }
