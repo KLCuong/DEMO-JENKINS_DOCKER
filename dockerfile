@@ -1,3 +1,3 @@
-FROM alpine:4.28.0
+FROM maven:3.9.6
 COPY . /HelloWorld
 CMD mvn /HelloWorld/HelloWorld.java
