@@ -1,12 +1,12 @@
 pipeline {
-    agent { docker { image 'maven:3.9.6' } }
+    agent any
+    
     stages {
-        stage('build') {
-            options {
-                timeout(time: 10, unit: 'SECONDS')
-            }
+        stage('Build Docker Image') {
             steps {
-                bat 'mvn --version'
+                script {
+                    docker.build('my-java-app', '-f Dockerfile .')
+                }
             }
         }
     }
