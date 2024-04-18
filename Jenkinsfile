@@ -7,14 +7,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('my-java-app', '.')
+                    docker build -t myapp:0.1 . 
                 }
             }
         }
         stage('Run Container') {
             steps {
                 script {
-                    docker.image('my-java-app').run('-d -p 8080:8080 --name my-container my-java-app')
+                    docker.image('myapp').run('-d -p 8080:8080 --name my-container my-java-app')
                 }
             }
         }
